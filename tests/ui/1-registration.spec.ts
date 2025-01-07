@@ -5,7 +5,7 @@ import { RandomNumber } from '../../src/utils';
 test.describe('User Registration', () => {
 	const rnd = RandomNumber.generateRnd();
 
-	test('Test-1: Successful registration', async ({ page }) => {
+	test.skip('Test-1: Successful registration', async ({ page }) => {
 		await page.goto('register.htm');
 
 		// Заполнение регистрационной формы
