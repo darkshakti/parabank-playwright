@@ -1,14 +1,36 @@
 {
-  "name": "parabank-playwright",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@playwright/test": "^1.49.1",
-    "@types/node": "^22.10.5"
-  }
+	"name": "parabank-playwright",
+	"version": "1.0.0",
+	"main": "index.js",
+	"keywords": [],
+	"author": "Margarita Vladyko",
+	"type": "module",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@faker-js/faker": "^9.3.0",
+		"@types/jest": "^29.5.14",
+		"axios": "^1.7.9",
+		"jest": "^29.7.0",
+		"playwright": "^1.49.1",
+		"ts-jest": "^29.2.5"
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"format": "prettier --write .",
+		"test:e2e": "playwright test",
+		"test": "npx playwright test --headed",
+		"test:e2e:report": "playwright show-report"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.49.1",
+		"@types/node": "^22.10.5",
+		"@typescript-eslint/eslint-plugin": "^8.19.0",
+		"@typescript-eslint/parser": "^8.19.0",
+		"eslint": "^9.17.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-prettier": "^5.2.1",
+		"prettier": "^3.4.2"
+	}
 }
