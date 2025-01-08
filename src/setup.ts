@@ -5,11 +5,11 @@ let page: Page;
 test.describe.configure({ mode: 'serial' });
 
 test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
+	page = await browser.newPage();
 });
 
 test.afterAll(async () => {
-    await page.close();
+	await page.close();
 });
 
 export { page };

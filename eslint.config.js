@@ -1,4 +1,4 @@
-import {createRequire} from 'module';
+import { createRequire } from 'module';
 import prettier from 'eslint-config-prettier';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';

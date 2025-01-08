@@ -11,6 +11,7 @@
 		"@faker-js/faker": "^9.3.0",
 		"@types/jest": "^29.5.14",
 		"axios": "^1.7.9",
+		"dotenv": "^16.4.7",
 		"jest": "^29.7.0",
 		"playwright": "^1.49.1",
 		"ts-jest": "^29.2.5"

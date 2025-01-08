@@ -1,23 +1,23 @@
-import {defineConfig, devices} from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
+import { config as dotenvConfig } from 'dotenv';
+import { configService } from './src/services';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+const result = dotenvConfig({});
+if ('error' in result && !configService.isCi()) {
+	throw new Error(
+		'Please provide .env file in the root of the project. See .env.example',
+	);
+}
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+	globalSetup: 'global-setup.ts',
+	// globalTeardown: 'global.teardown.ts',
 	testDir: './tests',
-	/* Run tests in files in parallel */
 	fullyParallel: true,
-
 	timeout: 30000,
-
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
@@ -28,22 +28,17 @@ export default defineConfig({
 	reporter: 'html',
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
-		/* Base URL to use in actions like `await page.goto('/')`. */
-		// baseURL: 'http://127.0.0.1:3000',
-		baseURL: 'https://parabank.parasoft.com/parabank/',
-		// headless: true,
+		baseURL: process.env.BASE_URL,
+		headless: true,
 		viewport: { width: 1280, height: 720 },
 		screenshot: 'only-on-failure',
-
-		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
 		trace: 'on-first-retry',
 	},
-
-	/* Configure projects for major browsers */
 	projects: [
 		{
 			name: 'chromium',
 			use: { ...devices['Desktop Chrome'] },
+			testMatch: ['**/*.spec.ts'],
 		},
 
 		// {
